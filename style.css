@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* body {
   background-color: rgba(204, 204, 204, 0.666);
 } */
@@ -14,6 +15,11 @@ li {
   list-style: none;
 }
 
+p {
+  font-family: TsukuAOldMinPr6-L,'Yu Mincho',"游明朝",'YuMincho',"游明朝体",'Meiryo',serif;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 .wrapper {
   max-width: 1020px;
   margin: 0 auto;
@@ -21,13 +27,13 @@ li {
 }
 
 .section-title {
-  font-size: 2.0em;
+  font-size: 1.8em;
   margin-bottom: 50px;
   text-align: center;
   position: relative;
-  color: #ffb004;
-  /* font-family: 'Crimson Text', serif; */
-  /* font-family: 'Zen Antique Soft', serif; */
+  color: #767472;
+  font-family: 'Crimson Text', serif;
+  font-family: 'Zen Antique Soft', serif;
   font-weight: bold;
 }
 
@@ -54,8 +60,8 @@ li {
 .section-title::after {
   content: "";
   width: 100px;
-  height: 2px;
-  background-color: #ffb004;
+  height: 1px;
+  background-color: #a1a1a1;
   display: block;
   position: absolute;
   bottom: -15px;
@@ -66,7 +72,7 @@ li {
 
 
 header {
-  background-color: rgba(255, 255, 255, 0.292);
+  background-color: rgba(255, 255, 255, 0);
   position: fixed;
   width: 100%;
   height: 70px;
@@ -74,6 +80,61 @@ header {
 } 
 header .title {
   padding-left: 30px;
+}
+
+
+.scrolldown1{
+  /*描画位置※位置は適宜調整してください*/
+position:absolute;
+left:50%;
+bottom:100px;
+  /*全体の高さ*/
+height:50px;
+}
+
+/*Scrollテキストの描写*/
+.scrolldown1 span{
+  /*描画位置*/
+position: absolute;
+left:-25px;
+top: -12px;
+  /*テキストの形状*/
+color: #eee;
+font-size: 0.9rem;
+letter-spacing: 0.15em;
+}
+
+/* 線の描写 */
+.scrolldown1::after{
+content: "";
+  /*描画位置*/
+position: absolute;
+top: 0;
+  /*線の形状*/
+width: 1px;
+height: 30px;
+background: #eee;
+  /*線の動き1.4秒かけて動く。永遠にループ*/
+animation: pathmove 1.4s ease-in-out infinite;
+opacity:0;
+}
+
+/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes pathmove{
+0%{
+  height:0;
+  top:0;
+  opacity: 0;
+}
+30%{
+  height:30px;
+  opacity: 1;
+}
+100%{
+  height:0;
+  top:50px;
+  opacity: 0;
+}
 }
 
 
@@ -101,6 +162,8 @@ header .title {
 .nav-menu li  {
   padding: 15px 0;
   border-top: 1px solid #fff;
+  font-family: 'Crimson Text', serif;
+  font-family: 'Zen Antique Soft', serif;
 }
 .nav-menu li:last-child {
   border-bottom: 1px solid #fff;
@@ -199,6 +262,8 @@ header .title {
 position: relative;
 display: block;
 padding: 10px 3px;
+font-family: 'Crimson Text', serif;
+font-family: 'Zen Antique Soft', serif;
 }
 
 .header-menu li.current a,
@@ -236,7 +301,7 @@ color:#484848;
 .mainvisual {
   height: 720px;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 220px;
 }
 .mainvisual .maintext {
   position: absolute;
@@ -263,6 +328,10 @@ color:#484848;
 .eachTextAnime p {
   opacity: 0;
 }
+.borderleft {
+  position: absolute;
+  top: 110px;
+}
 
 .btn-1 {
   /*線の基点とするためrelativeを指定*/
@@ -270,55 +339,93 @@ color:#484848;
   /*ボタンの形状*/
   display: inline-block;
   padding: 15px 40px;
-  padding-right: 60px;
-  margin-top: 100px;
+  margin-top: 400px;
   color: white;
-  background: linear-gradient(90deg, rgba(251, 0, 0, 1) 0%, rgba(255, 176, 4, 1) 100%);
+  background-color: rgba(127, 125, 125, 0.732);
+  /* background: linear-gradient(90deg, rgba(251, 0, 0, 1) 0%, rgba(255, 176, 4, 1) 100%); */
   /* border: 1px solid #ccc; */
   text-decoration: none;
-  border-radius: 30px;
   outline: none;
   /*はみ出す背景色を隠す*/
   overflow: hidden;
-  /* font-family: 'Crimson Text', serif; */
-  /* font-family: 'Zen Antique Soft', serif; */
+  font-family: 'Crimson Text', serif; 
+  font-family: 'Zen Antique Soft', serif;
 }
 .btn-1:hover {
   opacity: 0.8;
 }
-.btn-1::before {
-  content: '';
-    /*絶対配置でキラッと光るの位置を決める*/
-  position: absolute;
-  top: 0;
-  left: -75%;
-    /*キラッと光る形状*/
-    width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-  transform: skewX(-25deg);
-}
-.btn-1::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-top: solid 1px #fff;
-  border-right: solid 1px #fff;
-  transform: rotate(45deg);
-  position: absolute;
-  top: 22px;
-  right: 20px;
+.btn-1{
+  /*線の基点とするためrelativeを指定*/
+position: relative;
+  margin:0 10px;
 }
 
-/*hoverした際の移動のアニメーション*/
-.btn-1:hover::before {
-  animation: shine 0.7s;
+/*線の基点位置*/
+.btn-1::before,
+.btn-1::after{
+content:"";
+  /*絶対配置で線の位置を決める*/
+position: absolute;
+  /*線の形状*/
+width: 0;
+height:2px;
+background:#ffffff;
+/*アニメーションの指定*/
+transition: all 0.2s linear;
+transition-delay: 0.2s;
 }
-@keyframes shine {
-  100% {
-    left: 125%;
-  }
+
+.btn-1::before{
+right: 0;
+top: 0;
 }
+.btn-1::after{
+left: 0;
+bottom: 0;
+}
+
+/*線の基点位置2 spanタグ*/
+
+.btn-1 span{
+display: block;
+}
+
+.btn-1 span::before,
+.btn-1 span::after{
+content:"";
+  /*絶対配置で線の位置を決める*/
+position: absolute;
+  /*線の形状*/
+width:2px;
+height:0;
+background: #ffffff;
+/*アニメーションの指定*/
+transition: all 0.2s linear;
+}
+
+.btn-1 span::before{
+left: 0;
+top: 0;
+}
+.btn-1 span::after{
+right: 0;
+bottom: 0;
+}
+
+/*現在地とhoverした際の線の変化*/
+
+
+.btn-1:hover::before,
+.btn-1:hover::after{
+width: 100%;/*横幅を100%に*/
+}
+
+
+.btn-1:hover span::before,
+.btn-1:hover span::after{
+height: 100%;/*縦幅を100%に*/
+}
+
 
 .mainvisual ul li {
   width: 100%;
@@ -326,20 +433,20 @@ color:#484848;
   top: 0;
   right: 0;
   opacity: 0;
-  animation: fade 15s infinite;
+  animation: fade 30s infinite;
 }
 .mainvisual ul li:nth-child(1) {
   animation-delay: 0s;
 }
 .mainvisual ul li:nth-child(2) {
-  animation-delay: 5s;
+  animation-delay: 10s;
 }
 .mainvisual ul li:nth-child(3) {
-  animation-delay: 10s;
+  animation-delay: 20s;
 }
 .mainvisual ul li img {
   width: 100%;
-  height: 720px;
+  height: 100vh;
   object-fit: cover;
 }
 
@@ -364,7 +471,7 @@ color:#484848;
 
 /* feature */
 #feature {
-  margin-top: 100px;
+  margin-top: 50px;
   padding-top: 40px;
   padding-bottom: 50px;
   background-image: url(img/feature.jpg);
@@ -411,6 +518,8 @@ color:#484848;
 }
 .item-text .category {
   margin-bottom: 10px;
+  font-family: 'Crimson Text', serif; 
+  font-family: 'Zen Antique Soft', serif;
 }
 
 
@@ -504,6 +613,7 @@ color:#484848;
    display: block;
    width:1500px;
   margin-bottom:20px;
+  padding-top: 30px;
     float: left;
     background: #fff;
     border-radius:10px;
@@ -626,12 +736,14 @@ figcaption p{
   }
 }
 
-
+#light,#standard,#premium {
+  padding-top: 80px;
+}
 
 .room {
   max-width: 750px;
   margin: 0 auto;
-  margin-top: 120px;
+  padding-top: 520px;
   position: relative;
   padding: 0 2%;
 }
@@ -777,6 +889,8 @@ footer {
 .footer-list ul li {
   padding: 0 30px;
   border-right: 1px solid black;
+  font-family: 'Crimson Text', serif; 
+  font-family: 'Zen Antique Soft', serif;
 }
 .footer-list ul li:hover {
   opacity: 0.5;
@@ -819,53 +933,11 @@ footer p {
 }
 
 
-.btn-2 {
+.yoyaku {
   position: fixed;
-  bottom: 15px;
-  right: auto;
-  left: 38%;
-  /*ボタンの形状*/
-  display: inline-block;
-  padding: 10px 40px;
-  padding-right: 60px;
-  margin-top: 100px;
-  color: white;
-  background: linear-gradient(90deg, rgba(251, 0, 0, 1) 0%, rgba(255, 176, 4, 1) 100%);
-  /* border: 1px solid #ccc; */
-  text-decoration: none;
-  border-radius: 30px;
-  outline: none;
-  /*はみ出す背景色を隠す*/
-  overflow: hidden;
-  z-index: 8;
-  /* font-family: 'Crimson Text', serif; */
-  /* font-family: 'Zen Antique Soft', serif; */
-}
-.btn-2:hover {
-  opacity: 0.8;
-}
-.btn-2::before {
-  content: '';
-    /*絶対配置でキラッと光るの位置を決める*/
-  position: absolute;
-  top: 0;
-  left: -75%;
-    /*キラッと光る形状*/
-    width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-  transform: skewX(-25deg);
-}
-.btn-2::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-top: solid 1px #fff;
-  border-right: solid 1px #fff;
-  transform: rotate(45deg);
-  position: absolute;
-  top: 17px;
-  right: 20px;
+  width: 200px;
+  height: 50px;
+  bottom: 40px;
 }
 
 /*hoverした際の移動のアニメーション*/
@@ -891,6 +963,10 @@ footer p {
     opacity: 0;
   
   }
+
+  .point-item img {
+    width: 500px;
+  }
   .btn-2 {
     position: fixed;
     top: auto;
@@ -898,10 +974,44 @@ footer p {
     left: 20px;
     bottom: 20px;
   }
+  .point-items {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 1fr 1fr;
+  }
 
-  .hover-table-layout {
+  .roomtext {
     flex-direction: column;
   }
+  .roominform {
+    width: 100%;
+    padding-left: 0;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 0.5px solid #7c7d7e;
+  }
+  .label, .detail {
+    font-size: 0.8em;
+    font-weight: none;
+  }
+  .map iframe {
+    width: 100%;
+  }
+
+
+  @media (max-width:540px) {
+    .point-items {
+      grid-template-columns: 1fr;
+    }
+  }
+  .room img {
+    height: 100%;
+  }
+
+  .footer-list ul li {
+    font-size: 0.8em;
+  }
+
 
 }
 
